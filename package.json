@@ -1,0 +1,40 @@
+{
+    "name": "manga-mine",
+    "private": true,
+    "version": "1.0.0",
+    "description": "A manga reader and downloader application.",
+    "workspaces": [
+        "packages/*"
+    ],
+    "files": [
+        "nx.json"
+    ],
+    "main": "index.js",
+    "scripts": {
+        "build": "nx affected --target=build",
+        "build:all": "nx run-many --target=build --all",
+        "change": "changeset && git add .changeset",
+        "clean": "nx reset && nx run-many --target=clean --all",
+        "e2e": "nx affected --target=e2e",
+        "lint": "nx affected --target=lint",
+        "lint:all": "nx run-many --target=lint --all",
+        "lint:fix": "nx affected --target=lint:fix",
+        "lint:fix:all": "nx run-many --target=lint:fix --all",
+        "test": "nx affected --target=test",
+        "test:all": "nx run-many --target=test --all",
+        "i": "yarn cache clean && yarn clean && yarn && yarn build:all",
+        "start": "nx affected --target=start"
+    },
+    "packageManager": "yarn@4.12.0",
+    "peerDependencies": {
+        "nx": "22.3.3"
+    },
+    "devDependencies": {
+        "@changesets/cli": "^2.29.8",
+        "@vitejs/plugin-react": "^5.1.2",
+        "nx": "22.3.3",
+        "vite": "^7.3.1"
+    },
+    "author": "agdemos",
+    "license": "UNLICENSED"
+}

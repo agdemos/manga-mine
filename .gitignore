@@ -4,3 +4,23 @@
 
 # Ignore Gradle build output directory
 build
+
+# Ignore local configuration file
+local.properties
+
+# Ignore IntelliJ IDEA project files
+.idea/
+*.iml
+
+# vscode settings
+.vscode
+
+# Yarn stuff
+node_modules/
+.yarn
+yarn-error.log
+.nx/
+config/dist
+
+# Ignore ts build files
+packages/manga-mine-ui/dist/
