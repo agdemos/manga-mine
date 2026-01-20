@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  frontend:
+    name: Frontend Test & Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v3
+        with:
+          node-version: 24
+
+      - name: Cache Yarn
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/node_modules
+            **/.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Enable Corepack & prepare Yarn
+        run: |
+          corepack enable
+          corepack prepare yarn@4.12.0 --activate
+          yarn --version
+
+      - name: Install frontend deps
+        run: yarn --cwd packages/manga-mine-ui install --frozen-lockfile
+
+      - name: Run frontend tests
+        run: yarn --cwd packages/manga-mine-ui test
+
+      - name: Build frontend
+        run: yarn --cwd packages/manga-mine-ui build

@@ -8,7 +8,7 @@
         "dist"
     ],
     "scripts": {
-        "clean": "rimraf .cache dist",
+        "clean": "rm -rf .cache dist",
         "build": "yarn clean && yarn build:types && yarn copy",
         "build:types": "tsc --build ./tsconfig.json",
         "copy": "copyfiles './src/**/*.{json,css,scss}' 'dist/esm' -U 1",
@@ -16,7 +16,8 @@
         "dev:types": "chokidar 'src/**/*.d.ts' -c 'yarn build:types'",
         "dev": "run-p dev:**",
         "prepack": "yarn build",
-        "start": "vite"
+        "start": "vite",
+        "test": "echo \"No tests specified\""
     },
     "packageManager": "yarn@4.12.0",
     "engines": {
@@ -25,8 +26,7 @@
     "dependencies": {
         "react": "^19.2.3",
         "react-dom": "^19.2.3",
-        "typescript": "^5.9.3",
-        "yarn": "^1.22.22"
+        "typescript": "^5.9.3"
     },
     "devDependencies": {
         "@types/node": "^20.4.2",
