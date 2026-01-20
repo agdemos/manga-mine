@@ -1,0 +1,41 @@
+{
+    "name": "manga-mine-ui",
+    "version": "1.0.0",
+    "description": "UI components for Manga Mine application.",
+    "main": "dist/index.js",
+    "license": "UNLICENSED",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "clean": "rimraf .cache dist",
+        "build": "yarn clean && yarn build:types && yarn copy",
+        "build:types": "tsc --build ./tsconfig.json",
+        "copy": "copyfiles './src/**/*.{json,css,scss}' 'dist/esm' -U 1",
+        "dev:copy": "chokidar '**/*.{json,css,scss}' -c 'yarn copy'",
+        "dev:types": "chokidar 'src/**/*.d.ts' -c 'yarn build:types'",
+        "dev": "run-p dev:**",
+        "prepack": "yarn build",
+        "start": "vite"
+    },
+    "packageManager": "yarn@4.12.0",
+    "engines": {
+        "node": ">=20"
+    },
+    "dependencies": {
+        "react": "^19.2.3",
+        "react-dom": "^19.2.3",
+        "typescript": "^5.9.3",
+        "yarn": "^1.22.22"
+    },
+    "devDependencies": {
+        "@types/node": "^20.4.2",
+        "@types/react": "^19.2.3",
+        "@types/react-dom": "^19.2.3",
+        "chokidar-cli": "^3.0.0",
+        "copyfiles": "^2.4.1"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "extends": "nx/presets/npm.json",
+    "taskRunnerOptions": {
+        "default": {
+            "runner": "nx/tasks-runners/default",
+            "options": {
+                "cacheableOperations": ["build", "lint", "test", "e2e"]
+            }
+        }
+    },
+    "targetDefaults": {
+        "build": {
+            "dependsOn": ["^build"]
+        },
+        "lint": {
+            "dependsOn": ["^build"]
+        },
+        "test": {
+            "dependsOn": ["^build"]
+        },
+        "e2e": {
+            "dependsOn": ["^build"]
+        }
+    },
+    "affected": {
+        "defaultBase": "main"
+    }
+}
